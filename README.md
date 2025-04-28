@@ -43,4 +43,51 @@ Exemple de lancement
 
 .\ActiveDirectorycreation.ps1
 
+Script de création d'UO, d'utilisateurs et de groupes Active Directory
+Description
+
+Ce script PowerShell permet d’automatiser :
+
+    La création de 3 Unités d'Organisation (UO) : AIX, MARSEILLE, TOULON.
+
+    La création de 3 utilisateurs (user.aix, user.marseille, user.toulon) dans leurs UO respectives.
+
+    La création de 3 groupes de sécurité associés.
+
+    L'ajout automatique de chaque utilisateur dans son groupe correspondant.
+
+Prérequis
+
+    Le module PowerShell ActiveDirectory doit être installé.
+
+    Le script doit être exécuté sur un serveur ou poste membre du domaine vazy.corp avec des droits d'administration Active Directory.
+
+Étapes du script
+
+    Déclaration des variables :
+
+        Domaine cible (vazy.corp),
+
+        Liste des UO (AIX, MARSEILLE, TOULON),
+
+        Mot de passe utilisateur par défaut.
+
+    Création des Unités d'Organisation (UO) sous DC=vazy,DC=corp.
+
+    Création des utilisateurs dans leurs UO respectives.
+
+    Création des groupes de sécurité associés aux utilisateurs.
+
+    Ajout des utilisateurs dans leurs groupes respectifs.
+
+Exemple de lancement
+
+.\Create-OU-Users-Groups.ps1
+
+Remarques
+
+    Le mot de passe des comptes est défini en clair (P@ssw0rd!) dans ce script. À modifier impérativement avant utilisation en production.
+
+    Les objets sont créés sans protection contre la suppression accidentelle (-ProtectedFromAccidentalDeletion $false).
+
 
