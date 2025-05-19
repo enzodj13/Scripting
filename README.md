@@ -70,7 +70,7 @@ Il prend en charge automatiquement :
 
 🖥️ Fonctionnement de l'interface
 
-L’interface vous propose de saisir les informations suivantes :
+    L’interface vous propose de saisir les informations suivantes :
     Champ	            Description
     Nom d'utilisateur	Identifiant de connexion (SamAccountName)
     Mot de passe	    Mot de passe de l’utilisateur
