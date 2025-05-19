@@ -71,11 +71,11 @@ Il prend en charge automatiquement :
 🖥️ Fonctionnement de l'interface
 
 L’interface vous propose de saisir les informations suivantes :
-Champ	            Description
-Nom d'utilisateur	Identifiant de connexion (SamAccountName)
-Mot de passe	    Mot de passe de l’utilisateur
-OU	                Unité d'organisation (ex : AIX, MARSEILLE)
-Groupes	            Liste de groupes à associer (séparés par des virgules)
+    Champ	            Description
+    Nom d'utilisateur	Identifiant de connexion (SamAccountName)
+    Mot de passe	    Mot de passe de l’utilisateur
+    OU	                Unité d'organisation (ex : AIX, MARSEILLE)
+    Groupes	            Liste de groupes à associer (séparés par des virgules)
 
 🔧 Comportement automatique
 
@@ -93,11 +93,11 @@ Lors de la validation :
 
 🧪 Exemple d’utilisation
 
-Champ	            Valeur saisie
-Nom d'utilisateur	user.aix
-Mot de passe	    P@ssw0rd123
-OU	                AIX
-Groupes	            grp.aix,grp.users
+    Champ	            Valeur saisie
+    Nom d'utilisateur	user.aix
+    Mot de passe	    P@ssw0rd123
+    OU	                AIX
+    Groupes	            grp.aix,grp.users
 
 👉 Résultat :
 
