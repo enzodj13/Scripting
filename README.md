@@ -43,51 +43,79 @@ Exemple de lancement
 
 .\ActiveDirectorycreation.ps1
 
-Script de création d'UO, d'utilisateurs et de groupes Active Directory
-Description
+Second script : Createuser.ps1
 
-Ce script PowerShell permet d’automatiser :
+🎯 Objectif
 
-    La création de 3 Unités d'Organisation (UO) : AIX, MARSEILLE, TOULON.
+Ce script permet de créer facilement un utilisateur Active Directory via une interface graphique (WinForms).
+Il prend en charge automatiquement :
 
-    La création de 3 utilisateurs (user.aix, user.marseille, user.toulon) dans leurs UO respectives.
+    La création de l’utilisateur
 
-    La création de 3 groupes de sécurité associés.
+    La création de l’Unité d’Organisation (OU) si elle n'existe pas
 
-    L'ajout automatique de chaque utilisateur dans son groupe correspondant.
+    La création des groupes (de sécurité, globaux) si nécessaires
 
-Prérequis
+    L’ajout de l’utilisateur aux groupes spécifiés
 
-    Le module PowerShell ActiveDirectory doit être installé.
+🧰 Prérequis
 
-    Le script doit être exécuté sur un serveur ou poste membre du domaine vazy.corp avec des droits d'administration Active Directory.
+    Être exécuté en tant qu'administrateur PowerShell
 
-Étapes du script
+    Avoir les modules ActiveDirectory installés (RSAT-AD-PowerShell)
 
-    Déclaration des variables :
+    Avoir une connexion au contrôleur de domaine
 
-        Domaine cible (vazy.corp),
+    Le domaine utilisé est vazy.corp (modifiable dans le script)
 
-        Liste des UO (AIX, MARSEILLE, TOULON),
+🖥️ Fonctionnement de l'interface
 
-        Mot de passe utilisateur par défaut.
+L’interface vous propose de saisir les informations suivantes :
+Champ	            Description
+Nom d'utilisateur	Identifiant de connexion (SamAccountName)
+Mot de passe	    Mot de passe de l’utilisateur
+OU	                Unité d'organisation (ex : AIX, MARSEILLE)
+Groupes	            Liste de groupes à associer (séparés par des virgules)
 
-    Création des Unités d'Organisation (UO) sous DC=vazy,DC=corp.
+🔧 Comportement automatique
 
-    Création des utilisateurs dans leurs UO respectives.
+Lors de la validation :
 
-    Création des groupes de sécurité associés aux utilisateurs.
+    ✅ Vérifie que tous les champs sont remplis
 
-    Ajout des utilisateurs dans leurs groupes respectifs.
+    ✅ Crée l'OU si elle n'existe pas (OU=...,DC=vazy,DC=corp)
 
-Exemple de lancement
+    ✅ Crée l’utilisateur dans l’OU spécifiée
 
-.\Create-OU-Users-Groups.ps1
+    ✅ Crée chaque groupe s’il n’existe pas dans la même OU
 
-Remarques
+    ✅ Ajoute l’utilisateur à chaque groupe
 
-    Le mot de passe des comptes est défini en clair (P@ssw0rd!) dans ce script. À modifier impérativement avant utilisation en production.
+🧪 Exemple d’utilisation
 
-    Les objets sont créés sans protection contre la suppression accidentelle (-ProtectedFromAccidentalDeletion $false).
+Champ	            Valeur saisie
+Nom d'utilisateur	user.aix
+Mot de passe	    P@ssw0rd123
+OU	                AIX
+Groupes	            grp.aix,grp.users
+
+👉 Résultat :
+
+    Crée l’OU AIX si elle n’existe pas
+
+    Crée l’utilisateur user.aix dans cette OU
+
+    Crée les groupes grp.aix et grp.users si nécessaires
+
+    Ajoute user.aix dans ces groupes
+
+🛠️ Personnalisation
+
+Pour modifier le domaine :
+
+# Ligne à adapter dans le script :
+$ouPath = "OU=$ouName,DC=vazy,DC=corp"
+
+Pour créer des groupes dans une OU différente de l’utilisateur, il faudra adapter la logique du script.
 
 
